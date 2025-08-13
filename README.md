@@ -13,14 +13,14 @@
 1. 下载 `doh_installer.py` 到 Windows 11。
 2. **以管理员身份**运行 PowerShell：
    ```powershell
-   python dot_installer_doh.py
+   python doh_installer.py
    ```
    按提示操作。
 
 ## 打包为 EXE
 已写好 PyInstaller 打包脚本：
 ```bat
-py -3.11 -m PyInstaller --onefile --uac-admin --name DoT-Installer .\dot_installer.py
+py -3.11 -m PyInstaller --onefile --uac-admin --name DoT-Installer .\doh_installer.py
 ```
 生成的 `dist\DoH-Installer.exe` 可直接双击运行（自动请求管理员）。
 
@@ -28,8 +28,3 @@ py -3.11 -m PyInstaller --onefile --uac-admin --name DoT-Installer .\dot_install
 > ```powershell
 > pip install pyinstaller
 > ```
-
-## 回滚
-在程序主菜单选择“卸载并恢复”，或运行安装器后选择卸载选项。备份文件位于：
-- 备份：`%ProgramData%\DoH_Installer\backup.json`
-- 日志：`%LOCALAPPDATA%\DoH_Installer\install_*.log`
