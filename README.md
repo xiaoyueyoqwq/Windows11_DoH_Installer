@@ -1,2 +1,35 @@
-# Windows11_DoH_Installer
-Use your favourite DoH on Windows!
+# Windows 11 原生 DoH 安装/卸载器
+
+## 功能
+- 以管理员身份运行的交互式安装器
+- 输入 DoH 模板 URL（默认示例：`https://223.5.5.5/dns-query`）
+- 解析 → 严格 HTTPS 预握手（SNI=主机名）→ 选用可用 IP
+- 关闭 DoT/DDR，启用 DoH；删除旧映射后写入新映射
+- 将所有活动物理网卡 IPv4 DNS 设为选定 IP（仅此一个）
+- 可选：网络屏蔽 443 时自动安装并连接 Cloudflare WARP 再重试
+- 卸载：恢复 DoH/DDR 默认、DNS 恢复为 DHCP（或按备份恢复）、可选卸载 WARP
+
+## 使用
+1. 下载 `doh_installer.py` 到 Windows 11。
+2. **以管理员身份**运行 PowerShell：
+   ```powershell
+   python dot_installer_doh.py
+   ```
+   按提示操作。
+
+## 打包为 EXE
+已写好 PyInstaller 打包脚本：
+```bat
+py -3.11 -m PyInstaller --onefile --uac-admin --name DoT-Installer .\dot_installer.py
+```
+生成的 `dist\DoH-Installer.exe` 可直接双击运行（自动请求管理员）。
+
+> 提示：若系统未安装 PyInstaller，先执行：
+> ```powershell
+> pip install pyinstaller
+> ```
+
+## 回滚
+在程序主菜单选择“卸载并恢复”，或运行安装器后选择卸载选项。备份文件位于：
+- 备份：`%ProgramData%\DoH_Installer\backup.json`
+- 日志：`%LOCALAPPDATA%\DoH_Installer\install_*.log`
