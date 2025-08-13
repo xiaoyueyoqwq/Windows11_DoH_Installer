@@ -8,7 +8,7 @@
 - 将所有活动物理网卡 IPv4 DNS 设为选定 IP（仅此一个）
 - 可选：网络屏蔽 443 时自动安装并连接 Cloudflare WARP 再重试
 - 卸载：恢复 DoH/DDR 默认、DNS 恢复为 DHCP（或按备份恢复）、可选卸载 WARP
-- 打个广告：各位可以试试[果冻网络加速服务](https://rule.66a.net/free.php)，免费好用很良心
+- **打个广告：各位可以试试[果冻网络加速服务](https://rule.66a.net/free.php)，免费好用很良心**
 
 ## 使用
 1. 下载 `doh_installer.py` 到 Windows 11。
